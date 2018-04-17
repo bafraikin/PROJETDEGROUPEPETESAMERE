@@ -9,7 +9,7 @@ load '../twitter/follow.rb'
 
 #d'abord on scrappe et on rempli la feuille excel
 
-def app_final(client,urls,sheet)
+def app_final(client,urls,sheet,gmail)
   version = 0
 
   while version < 1 && version > 4
@@ -20,7 +20,7 @@ def app_final(client,urls,sheet)
     urls.each do | url |
       get_all_the_urls(url,sheet)   #partis scrapping
     end
-    go_through_all_the_lines(sheet)  #on envoit des mail aux emails qu'on a recuperer
+    go_through_all_the_lines(sheet, gmail)  #on envoit des mail aux emails qu'on a recuperer
     follow_townhall(client,sheet) # on follow les comptes de villes
   end
 
@@ -52,6 +52,10 @@ url[4] = "http://annuaire-des-mairies.com/gironde.html"
 #ne pas donner une worksheet vide pour la version 3
 session = GoogleDrive::Session.from_config("../config.json")
 sheet = session.spreadsheet_by_key("1wrkw4OuAZX9gH7J7A4qRbIhNXgbB0twXQBswYm5DM1w").worksheets[0]
+
+#paramètre pour Gmail
+gmail = Gmail.connect(ENV['User'], ENV['Pwd'])
+
 
 #config pour twitter
 client = Twitter::REST::Client.new do | config |
