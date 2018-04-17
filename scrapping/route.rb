@@ -1,11 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
 
-#uncomment si tu veux tester le fichier separement
-=begin
-require 'google_drive'
-session = GoogleDrive::Session.from_config("config.json")
-=end
 
 def get_the_email(temporaire, nb, feuillu)
   puts temporaire.xpath("/html/body/div/main/section[2]/div/table/tbody/tr[4]/td[2]").text   # affichage de chaque email trouvé
@@ -28,23 +23,4 @@ def get_all_the_urls(liens,feuille)                                  #creation d
     get_the_email(tmp, (n + index), feuille)   #appel de la fonction# à partir due l'url recuperé
   end
 end
-
-#uncomment pour la correction
-=begin
-
-url = []
-url[0] = "http://annuaire-des-mairies.com/nord.html"
-url[1] = "http://annuaire-des-mairies.com/nord-2.html"
-url[2] = "http://annuaire-des-mairies.com/nord-3.html"
-url[3] = "http://annuaire-des-mairies.com/haut-rhin.html"
-url[4] = "http://annuaire-des-mairies.com/gironde.html"
-
-sheet = session.spreadsheet_by_key("1FTrYqyqsvrlciU5OjC7H6LvPbd0_kjdBrp93g7oOv4k").worksheets[0]
-
-url.each do |urle|
-  get_all_the_urls(urle,sheet)
-  sheet.save
-end
-
-=end
 
