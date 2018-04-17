@@ -4,7 +4,6 @@ require 'gmail'
 require "google_drive"
 
 def send_email_to_line(i,ws,gmail) # méthode pour envoyer le mail à la ligne i de notre google spreadsheet
-  #Gmail.connect(ENV['User'], ENV['Pwd']) do |gmail| #connexion à mon compte gmail via file.env 
 
     name = "Gauthier" # mon nom qui apparaît dans le corps du mail
     nom_commune = ws[i,1] #nom de la commune pour pouvoir l'appeler dans le corps du mail
