@@ -10,14 +10,30 @@ load '../twitter/follow.rb'
 #d'abord on scrappe et on rempli la feuille excel
 
 def app_final(client,urls,sheet)
-
-  urls.each do | url |
-    puts "coucou"
-    get_all_the_urls(url,sheet)   #partis scrapping
+  version = 0
+  while version < 0 || version > 4
+    version= get.chomp.to_i
   end
-  go_through_all_the_lines(sheet)  #on envoit des mail aux emails qu'on a recuperer
-  follow_townhall(client,sheet) # on follow les comptes de villes
+
+  if version == 1 
+    urls.each do | url |
+      get_all_the_urls(url,sheet)   #partis scrapping
+    end
+    go_through_all_the_lines(sheet)  #on envoit des mail aux emails qu'on a recuperer
+    follow_townhall(client,sheet) # on follow les comptes de villes
+  end
+
+  if version == 2
+
+  end
+  if version == 3
+
+  end
+  if version == 4
+
+  end
 end
+
 
 #on a decidé de prendre le nord et ses 695 communes ainsi que la gironde, et le haut-rhin
 url = []
