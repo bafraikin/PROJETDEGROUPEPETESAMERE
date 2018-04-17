@@ -14,18 +14,17 @@ end
 session = GoogleDrive::Session.from_config("../config.json")
 sheet = session.spreadsheet_by_key("1FTrYqyqsvrlciU5OjC7H6LvPbd0_kjdBrp93g7oOv4k").worksheets[0]
 
+def follow_townhall(sheet,client)
 index = 1
 
 while sheet[index,1] != ""
-puts client.user_search(sheet[index,1])[0]
- # client.follow(allo)
-#
-  #puts "follow #{allo.name}"
+
+  premier_result = client.user_search(sheet[index,1])[0]
+  client.follow(premier_result)
+  puts "follow #{premier_result.name}"
   sleep 3
   index +=1
 end
+end
 
-
-
-
-
+follow_townhall(sheet,client)
