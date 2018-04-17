@@ -23,8 +23,9 @@ def get_all_the_urls(liens,feuille)
   end
   for n in 0...size
     tmp = Nokogiri::HTML(open("http://www.annuaire-des-mairies.com#{doc.css("a.lientxt")[n]['href']}")) #ouvre chaque pages des mairies
-
-    feuille[(n+index),1] = doc.css("a.lientxt")[n]['href'].tr("/95/", "").gsub(".html", "").tr(".", "").to_s #construction des noms des mairies
+    feuille[(n+index),1] = doc.css("a.lientxt")[n]['href'].tr("/", "").gsub(".html", "").tr(".", "").to_s #construction des noms des mairies
+    feuille[(n+index),3] = feuille[(n+index),1][0,2] # recuperation departement
+    feuille[(n+index),1] = feuille[(n+index),1].tr("1234678590","") #recuperation du nom de la ville departement
     feuille.save
     get_the_email(tmp, (n + index), feuille)            #appel de la fonction# à partir due l'url recuperé
   end

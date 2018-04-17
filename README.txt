@@ -15,6 +15,7 @@ et notre magnifique profil twitter ici: https://twitter.com/japprend_le_cod
 Il y a toute les config à remplir dans l'app_final.
 
 Ensuite vous pourrez tester l'une ou l'autre des applis comme bon vous semble: en exécutant le fichier app.rb dans app_final, vous devez taper dans la console le numéro de la version que vous souhaitez tester (1: totalité de l'exo; 2: scrapping; 3: twitter; 4: envoi mail).
+VOUS DEVREZ D'ABORD REMPLIR TOUTES LES CONFIG. GMAIL GDRIVE ET TWITTER
 
 Le code source est dans chaque repo et les noms sont évocateurs.
 
