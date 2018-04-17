@@ -11,22 +11,21 @@ client = Twitter::REST::Client.new do | config |
   config.access_token_secret = ENV['secretToken']
 end
 
-session = GoogleDrive::Session.from_config("config.json")
+session = GoogleDrive::Session.from_config("../config.json")
+sheet = session.spreadsheet_by_key("1FTrYqyqsvrlciU5OjC7H6LvPbd0_kjdBrp93g7oOv4k").worksheets[0]
 
+index = 1
 
-
-=begin
-client.user_search('Cerfontaine').each do |allo|
-  client.follow(allo)
-  puts "follow #{allo.name}"
+while sheet[index,1] != ""
+puts client.user_search(sheet[index,1])[0]
+ # client.follow(allo)
+#
+  #puts "follow #{allo.name}"
   sleep 3
+  index +=1
 end
-=end
 
-=begin
-while 1
-  client.create_direct_message("@lesflibusTHP", "salut les ptis loups")
-  sleep 3 
-end
-=end
+
+
+
 
