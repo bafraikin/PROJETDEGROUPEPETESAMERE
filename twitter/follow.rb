@@ -10,13 +10,14 @@ def follow_townhall(sheet,client)
   while sheet[index,1] != ""  #parcours la feuille
 
     premier_result = client.user_search(sheet[index,1])[0]   #search et recupere le 1er user trouvé
+    puts "on recherche #{sheet[index, 1]}"
     if premier_result != nil 
       client.follow(premier_result)    #follow
-    puts "follow #{premier_result.name}"  #affichage
-    puts "sleep de 10 seconde" 
-    sleep 10  #sleep pour permettre à twitter    
-    index +=1
+      puts "follow #{premier_result.name}"  #affichage
+      puts "sleep de 10 seconde" 
     end
+      sleep 10  #sleep pour permettre à twitter    
+    index +=1
   end
 end
 
