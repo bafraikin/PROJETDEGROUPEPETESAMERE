@@ -12,8 +12,8 @@ load '../twitter/follow.rb'
 def app_final(client,urls,sheet,gmail)
   version = 0
 
-  while version < 1 && version > 4
-    version= get.chomp.to_i
+  while version < 1 || version > 4
+    version= gets.chomp.to_i
   end
 
   if version == 1 
@@ -35,7 +35,7 @@ get_all_the_urls(url,sheet)  #fournir une feuille vide
   end                             #ne pas fournir une feuille vide    
 
   if version == 4  
-
+    go_through_all_the_lines(sheet, gmail) #envoi des mails
   end
 end
 
@@ -51,7 +51,7 @@ url[4] = "http://annuaire-des-mairies.com/gironde.html"
 #session pour la worksheet
 #ne pas donner une worksheet vide pour la version 3
 session = GoogleDrive::Session.from_config("../config.json")
-sheet = session.spreadsheet_by_key("1wrkw4OuAZX9gH7J7A4qRbIhNXgbB0twXQBswYm5DM1w").worksheets[0]
+sheet = session.spreadsheet_by_key("1FTrYqyqsvrlciU5OjC7H6LvPbd0_kjdBrp93g7oOv4k").worksheets[0]
 
 #paramètre pour Gmail
 gmail = Gmail.connect(ENV['User'], ENV['Pwd'])
@@ -65,5 +65,5 @@ client = Twitter::REST::Client.new do | config |
   config.access_token_secret = ENV['secretToken']
 end
 #il reste une config à faire dans le mailer pour envoyer des mail
-app_final(client, url, sheet)
+app_final(client, url, sheet, gmail)
 

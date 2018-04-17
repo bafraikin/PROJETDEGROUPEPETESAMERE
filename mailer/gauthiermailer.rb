@@ -21,8 +21,8 @@ def send_email_to_line(i,ws,gmail) # méthode pour envoyer le mail à la ligne i
       end
     end
     puts "email envoyé à #{ws[i,2]}"
-  end
 end
+
 
 def go_through_all_the_lines(ws, gmail) #méthode pour envoyer le mail à toutes les lignes de notre Google spreadsheet
 
