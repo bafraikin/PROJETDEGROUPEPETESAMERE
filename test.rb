@@ -6,7 +6,6 @@ require 'dotenv'
 
 Dotenv.load('../file.env')
 
-allo
 
 gmail = Gmail.connect(ENV['User'], ENV['Pwd'])
 
