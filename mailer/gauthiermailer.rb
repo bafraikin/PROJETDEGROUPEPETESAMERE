@@ -35,12 +35,7 @@ def go_through_all_the_lines(ws, gmail) #méthode pour envoyer le mail à toutes
   end
 end
 
-#uncomment pour la correction
-=begin
-session = GoogleDrive::Session.from_config("../config.json") #connexion à ma google spreadhseet via config.json
-w_sheet = session.spreadsheet_by_key("1FTrYqyqsvrlciU5OjC7H6LvPbd0_kjdBrp93g7oOv4k").worksheets[0]
- go_through_all_the_lines(w_sheet)
-=end
+
 
 
 
