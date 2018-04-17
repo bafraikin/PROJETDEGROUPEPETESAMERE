@@ -1,9 +1,11 @@
 require 'nokogiri'
 require 'open-uri'
+
+#uncomment si tu veux tester le fichier separement
+=begin
 require 'google_drive'
-
-
 session = GoogleDrive::Session.from_config("config.json")
+=end
 
 def get_the_email(temporaire, nb, feuillu)
   puts temporaire.xpath("/html/body/div/main/section[2]/div/table/tbody/tr[4]/td[2]").text   # affichage de chaque email trouvé
@@ -23,11 +25,12 @@ def get_all_the_urls(liens,feuille)                                  #creation d
     tmp = Nokogiri::HTML(open("http://www.annuaire-des-mairies.com#{doc.css("a.lientxt")[n]['href']}")) #ouvre chaque pages des mairies
     feuille[(n+index),1] = doc.css("a.lientxt")[n]['href'].tr("/95/", "").gsub(".html", "").tr(".", "").to_s #construction des noms des mairies
     feuille.save
-    get_the_email_of_a_townhal_from_its_webpage(tmp, (n + index), feuille)   #appel de la fonction# à partir due l'url recuperé
+    get_the_email(tmp, (n + index), feuille)   #appel de la fonction# à partir due l'url recuperé
   end
 end
 
-
+#uncomment pour la correction
+=begin
 
 url = []
 url[0] = "http://annuaire-des-mairies.com/nord.html"
@@ -43,5 +46,5 @@ url.each do |urle|
   sheet.save
 end
 
-
+=end
 
