@@ -13,6 +13,14 @@ def app_final(client,urls,sheet,gmail)
   version = 0
 
   while version < 1 || version > 4
+    puts "\n\n"
+    puts "On vous laisse le choix, ici vous pouvez choisir quelle partie de l'app vous appliquez"
+    puts "1:  Vous lancez le processus normal, avec le scrapping, l'envoie de mail, et les follows"
+    puts "2:  Vous lancez le scrapping, initié une feuille vide est recommandé"
+    puts "3:  Vous lancez twitter et les follows, initié une worksheet pleine est conseillé"
+    puts "4:  Vous lancez l'envoie de mail, initié une worksheet pleine est conseillé"
+    puts "\n"
+    print "faites votre choix ici : " 
     version= gets.chomp.to_i
   end
 
