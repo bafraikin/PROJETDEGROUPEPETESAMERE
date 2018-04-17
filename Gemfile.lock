@@ -72,6 +72,7 @@ DEPENDENCIES
   dotenv
   gmail
   google_drive
+  nokogiri
 
 RUBY VERSION
    ruby 2.4.1p111
