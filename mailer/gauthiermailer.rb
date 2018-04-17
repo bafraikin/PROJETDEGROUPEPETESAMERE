@@ -7,7 +7,7 @@ def send_email_to_line(i) # méthode pour envoyer le mail à la ligne i de notre
 	Gmail.connect(ENV['User'], ENV['Pwd']) do |gmail| #connexion à mon compte gmail via file.env
 
 	session = GoogleDrive::Session.from_config("config.json") #connexion à ma google spreadhseet via config.json
-	ws = session.spreadsheet_by_key("1w7b3mU6STnnuPWLkjBX4h_5Bb4AE0pYJSg6lWW6zelo").worksheets[0]
+	ws = session.spreadsheet_by_key("1FTrYqyqsvrlciU5OjC7H6LvPbd0_kjdBrp93g7oOv4k").worksheets[0]
 
 	name = "Gauthier" # mon nom qui apparaît dans le corps du mail
 	nom_commune = ws[i,1] #nom de la commune pour pouvoir l'appeler dans le corps du mail
@@ -28,10 +28,14 @@ def send_email_to_line(i) # méthode pour envoyer le mail à la ligne i de notre
 end
 
 def go_through_all_the_lines #méthode pour envoyer le mail à toutes les lignes de notre Google spreadsheet
-	for a in 1..5 do #chiffre max foireux
-		send_email_to_line(a) #envoie le mail à chaque ligne
+	session = GoogleDrive::Session.from_config("config.json") #connexion à ma google spreadhseet via config.json
+	ws = session.spreadsheet_by_key("1FTrYqyqsvrlciU5OjC7H6LvPbd0_kjdBrp93g7oOv4k").worksheets[0]
+
+	i = 1
+	until ws[i,1] == "" do #chiffre max foireux
+		send_email_to_line(i) #envoie le mail à chaque ligne
+		i += 1
 	end
 end
-
 go_through_all_the_lines
 
