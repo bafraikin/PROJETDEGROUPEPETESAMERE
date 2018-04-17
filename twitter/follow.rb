@@ -8,9 +8,11 @@ def follow_townhall(sheet,client)
   index = 1
 
   while sheet[index,1] != ""  #parcours la feuille
+    puts "coucou"
     premier_result = client.user_search(sheet[index,1])[0]   #search et recupere le 1er user trouvé
     client.follow(premier_result)    #follow
     puts "follow #{premier_result.name}"  #affichage
+    puts "sleep de 10 seconde" 
     sleep 10  #sleep pour permettre à twitter    
     index +=1
   end

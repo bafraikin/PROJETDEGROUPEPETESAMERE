@@ -21,7 +21,7 @@ def app_final(client,urls,sheet,gmail)
       get_all_the_urls(url,sheet)   #partis scrapping
     end
     go_through_all_the_lines(sheet, gmail)  #on envoit des mail aux emails qu'on a recuperer
-    follow_townhall(client,sheet) # on follow les comptes de villes
+    follow_townhall(sheet,client) # on follow les comptes de villes
   end
 
   if version == 2
@@ -31,7 +31,7 @@ get_all_the_urls(url,sheet)  #fournir une feuille vide
   end
 
   if version == 3                 #version twitter    
-    follow_townhall(client,sheet) # follow les comptes
+    follow_townhall(sheet,client) # follow les comptes
   end                             #ne pas fournir une feuille vide    
 
   if version == 4  
@@ -55,7 +55,6 @@ sheet = session.spreadsheet_by_key("1FTrYqyqsvrlciU5OjC7H6LvPbd0_kjdBrp93g7oOv4k
 
 #paramètre pour Gmail
 gmail = Gmail.connect(ENV['User'], ENV['Pwd'])
-
 
 #config pour twitter
 client = Twitter::REST::Client.new do | config |
